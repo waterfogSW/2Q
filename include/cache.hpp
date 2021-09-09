@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CACHE_HPP
 #define CAHCE_HPP
 
