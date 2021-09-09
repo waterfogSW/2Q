@@ -20,7 +20,7 @@ LRU의 이러한 단점을 보완하기 위해 2Q는 추가적인 대기열을 �
 
 ![img](https://user-images.githubusercontent.com/4745789/100536835-41a0f100-3249-11eb-920b-0bcaff905906.png)
 
-2Q 알고리즘은 기본 LRU버퍼 Am과 보조 FIFO버퍼 A1으로 구성됩니다. Page Fault가 발생하면 먼저 A1버퍼에 페이지를 push합니다. 이후 페이지가 다시 참조되면 LRU버퍼 Am으로 페이지를 push합니다. Am버퍼 page의 hot함을 보장할 수 있습니다. 
+2Q 알고리즘은 기본 LRU버퍼 Am과 보조 FIFO버퍼 A1으로 구성됩니다. Page Fault가 발생하면 먼저 A1버퍼에 페이지를 push합니다. 이후 페이지가 다시 참조되면 LRU버퍼 Am으로 페이지를 push합니다. 이를통해 Am버퍼에 있는 페이지의 hot함을 보장할 수 있습니다. 
 
 만약 A1버퍼의 page가 다시 참조되지 않으면 A1버퍼의 fifo정책에 따라 퇴출됩니다. 
 이는 해당 페이지가 cold하며, 캐시될 필요가 없음을 암시합니다. 
