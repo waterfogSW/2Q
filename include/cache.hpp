@@ -45,7 +45,7 @@ class Cache {
     std::unordered_map<Key, std::list<Node *>::iterator> key_map;
 
     size_t max_csize;
-    size_t hit_count;
+    size_t hit_count = 0;
 };
 
 }  // namespace cache

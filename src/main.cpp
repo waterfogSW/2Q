@@ -6,5 +6,7 @@ using namespace std;
 int main() {
     cache::LRU a(5);
     a.Insert("key1", "val1");
-    cout << a.Search("key1");
+    a.Insert("key2", "val2");
+    a.Insert("key1", "val1");
+    cout << a.getHit();
 }
