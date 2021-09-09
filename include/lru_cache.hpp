@@ -43,24 +43,28 @@ void LRU::Insert(const Key &key, const Value &value) {
 }
 
 Value LRU::Search(const Key &key) {
-    auto iter = key_map.find(key);
-    Value rvalue;
-    Node *node;
+	auto iter = key_map.find(key);
+	Value rvalue;
+	Node* node;
+	
+	if(iter != key_map.end()) {
+		que.erase(key_map[key]);
+		
+		node = *key_map[key];
+		rvalue = (*key_map[key])->value;
 
-    if (iter != key_map.end()) {
-        que.erase(key_map[key]);
+		hit_count++;
+		
+		que.push_front(node);
+		key_map[key] = que.begin();
+		return rvalue;
+	} 
+    
+    else {
+		return "";
+	}
 
-        node = *key_map[key];
-        rvalue = (*key_map[key])->value;
-
-        hit_count++;
-
-        que.push_front(node);
-        key_map[key] = que.begin();
-        return rvalue;
-    } else {
-        return NULL;
-    }
+    
 }
 }  // namespace cache
 
