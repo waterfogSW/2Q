@@ -25,7 +25,7 @@ class TWO_Q : public Cache {
 void TWO_Q::Insert(const Key &key, const Value &value) {
     // Search Am Cash.
     auto iter = key_map.find(key);
-    Node *node;
+    Node* node;
 
     // Am cache hit
     if (iter != key_map.end()) {
@@ -56,8 +56,8 @@ void TWO_Q::Insert(const Key &key, const Value &value) {
             hit_count++;
 
             // erase from A1 cache
-            sub_key_map.erase(sub_iter);
             sub_que.erase(sub_key_map[key]);
+            sub_key_map.erase(sub_iter);
 
             // push Am cache
             que.push_front(node);
@@ -65,7 +65,7 @@ void TWO_Q::Insert(const Key &key, const Value &value) {
         }
         // A1 cache miss
         else {
-            if (sub_que.size() >= max_csize) {
+            if (sub_que.size() >= max_sub_csize) {
                 Node *tmp = sub_que.back();
                 sub_key_map.erase(tmp->key);
                 sub_que.pop_back();
@@ -76,7 +76,7 @@ void TWO_Q::Insert(const Key &key, const Value &value) {
             node = new Node(key, value);
 
             sub_que.push_front(node);
-            sub_key_map[key] = que.begin();
+            sub_key_map[key] = sub_que.begin();
         }
     }
 }
