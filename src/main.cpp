@@ -10,6 +10,7 @@ int main() {
 
     a.Insert("key1","val1");
     a.Insert("key1","val1");
+    cout << a.Search("key1");
 
     // cache::FIFO a(5);
 
