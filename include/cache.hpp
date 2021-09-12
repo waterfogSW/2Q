@@ -23,6 +23,9 @@ class Node {
     //metadata
     size_t k_size;
     size_t v_size;
+
+    //reference count
+    size_t cnt;
 };
 
 class Cache {

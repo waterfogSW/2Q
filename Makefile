@@ -6,19 +6,11 @@ SRCS_DIR	= src
 SRCS		= $(wildcard $(SRCS_DIR)/*.cpp)
 OBJS		= $(SRCS:.cpp=.o)
 
-TARGET = main
-
-.c.o:
-	$(CXX) -c $(CXXFLAGS) -o $@ $<
-
-$(TARGET) : $(OBJS)
-	$(CXX) -o $(TARGET) $(OBJS)
+TARGET = src/main
 
 all: $(TARGET)
-
-dep : 
-	gccmaedep $(INC) $(SRCS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRCS) $(INC)
 
 .PHONY : clean
 clean:
-	rm -rf $(TARGET) $(OBJS)
+	rm -rf $(TARGET)
