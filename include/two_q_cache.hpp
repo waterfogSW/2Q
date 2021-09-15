@@ -59,6 +59,15 @@ void TWO_Q::Insert(const Key &key, const Value &value) {
             sub_key_map.erase(sub_iter);
 
             // push Am cache
+            if(que.size() >= max_csize) {
+                Node* tmp = que.back();
+                key_map.erase(tmp->key);
+                que.pop_back();
+                delete tmp;
+            }
+
+            node = new Node(key, value);
+            
             que.push_front(node);
             key_map[key] = que.begin();
         }
