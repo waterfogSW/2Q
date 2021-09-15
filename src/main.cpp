@@ -19,7 +19,8 @@ int main(int argc, char const *argv[]) {
     size_t a1_size = csize * (0.01 * a1_size_ratio);
     size_t am_size = csize - a1_size;
 
-    cout << a1_size << ' ' << am_size << '\n';
+    cout << "a1_size : " << a1_size << '\n';
+    cout << "am_size : " << am_size << '\n';
 
     cache::FIFO fifo_cache(csize);
     cache::LRU lru_cahce(csize);
