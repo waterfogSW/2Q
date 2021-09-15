@@ -6,8 +6,8 @@
 namespace cache {
 class TWO_Q : public Cache {
    public:
-    TWO_Q(size_t size) : Cache(size / 2) {
-        max_sub_csize = size / 2;
+    TWO_Q(size_t am_size, size_t a1_size) : Cache(am_size) {
+        max_sub_csize = a1_size;
     }
 
     void Insert(const Key &key, const Value &value);
@@ -18,8 +18,7 @@ class TWO_Q : public Cache {
     std::list<Node *> sub_que;
     std::unordered_map<Key, std::list<Node *>::iterator> sub_key_map;
 
-    size_t max_sub_csize;
-    size_t hit_count = 0;
+    size_t max_sub_csize = 0;
 };
 
 void TWO_Q::Insert(const Key &key, const Value &value) {
