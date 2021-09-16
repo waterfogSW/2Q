@@ -18,28 +18,57 @@ class LFU : public Cache {
 
 void LFU::Insert(const Key &key, const Value &value) {
     auto iter = key_map.find(key);
+	Node* node;
+
+	if(iter != key_map.end()) {
+		que.erase(key_map[key]);	
+
+		node = *key_map[key];
+		
+		node->value = value;
+		node->v_size = value.size();
+
+		hit_count++;
+        node->cnt++;
+	} else {
+		if(que.size() >= max_csize) {
+            auto it = findLFPage();
+			Node* tmp = *it;
+
+			key_map.erase(tmp->key);	
+			que.erase(it);
+
+			delete tmp;
+		}
+		
+		node = new Node(key, value);
+	}
+	
+	que.push_front(node);
+	key_map[key] = que.begin();
+}
+
+Value LFU::Search(const Key &key) {
+    auto iter = key_map.find(key);
+    Value rvalue;
     Node *node;
 
-    if (iter != key_map.end()) {
+    if(iter != key_map.end()) {
         que.erase(key_map[key]);
-        node = *key_map[key];
 
-        node->value = value;
-        node->v_size = value.size();
+        node = *key_map[key];
+        rvalue = (*key_map[key])->value;
 
         hit_count++;
         node->cnt++;
-    } else {
-        if (que.size() >= max_csize) {
-            // delete
-            Node *tmp = que.front();
-            key_map.erase(tmp->key);
-            que.pop_back();
 
-            delete tmp;
-        }
+        que.push_front(node);
+        key_map[key] = que.begin();
+        return rvalue;
+    }
 
-        node = new Node(key, value);
+    else {
+        return "";
     }
 }
 

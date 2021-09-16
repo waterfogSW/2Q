@@ -25,7 +25,7 @@ class Node {
     size_t v_size;
 
     //reference count
-    size_t cnt;
+    size_t cnt = 0;
 };
 
 class Cache {
