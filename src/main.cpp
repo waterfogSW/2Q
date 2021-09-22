@@ -20,6 +20,8 @@ int main(int argc, char const *argv[]) {
     size_t a1_size = csize * (0.01 * a1_size_ratio);
     size_t am_size = csize - a1_size;
 
+    double record_cnt = 0;
+
     cout << "a1_size : " << a1_size << '\n';
     cout << "am_size : " << am_size << '\n';
 
@@ -37,14 +39,21 @@ int main(int argc, char const *argv[]) {
             lru_cache.Insert(gline, "A");
             lfu_cache.Insert(gline, "A");
             twoQ_cache.Insert(gline, "A");
+            record_cnt++;
 		}
 		wfile.close();
 	}
+    printf("%.f\n", record_cnt);
 
-	cout << "FIFO  : Hit: " << fifo_cache.getHit() << '\n';
-	cout << "LRU   : Hit: " << lru_cache.getHit() << '\n';
-    cout << "LFU   : Hit: " << lfu_cache.getHit() << '\n';
-    cout << "TWO Q : Hit: " << twoQ_cache.getHit() << '\n';
+	// cout << "FIFO  : Hit: " << fifo_cache.getHit() << '\n';
+	// cout << "LRU   : Hit: " << lru_cache.getHit() << '\n';
+    // cout << "LFU   : Hit: " << lfu_cache.getHit() << '\n';
+    // cout << "TWO Q : Hit: " << twoQ_cache.getHit() << '\n';
+
+    printf("FIFO %.1f\n", (fifo_cache.getHit() / record_cnt)*100);
+    printf("LRU %.1f\n", (lru_cache.getHit() / record_cnt)*100);
+    printf("LFU %.1f\n", (lfu_cache.getHit() / record_cnt)*100);
+    printf("TWO %.1f\n", (twoQ_cache.getHit() / record_cnt)*100);
 
     return 0;
 }
