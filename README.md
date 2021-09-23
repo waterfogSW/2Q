@@ -12,6 +12,8 @@ make
 - 3rd argument (1000) : Total cache size
 - 4th argument (20) : The ratio of the size of a1 cash to the total cache size.
 
+## Experiment
+10000부터 cache size를 줄여가며 진행
 
 ## LRU
 LRU는 Least Recently Used의 약자로 페이지 폴트가 발생하게 되면 가장 오래전에 접근했던 페이지를 퇴출시켜 공간을 확보합니다.
