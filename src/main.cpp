@@ -22,8 +22,8 @@ int main(int argc, char const *argv[]) {
 
     double record_cnt = 0;
 
-    cout << "a1_size : " << a1_size << '\n';
-    cout << "am_size : " << am_size << '\n';
+    // cout << "a1_size : " << a1_size << '\n';
+    // cout << "am_size : " << am_size << '\n';
 
     cache::FIFO fifo_cache(csize);
     cache::LRU lru_cache(csize);
@@ -50,10 +50,10 @@ int main(int argc, char const *argv[]) {
     // cout << "LFU   : Hit: " << lfu_cache.getHit() << '\n';
     // cout << "TWO Q : Hit: " << twoQ_cache.getHit() << '\n';
 
-    printf("FIFO %.1f\n", (fifo_cache.getHit() / record_cnt)*100);
-    printf("LRU %.1f\n", (lru_cache.getHit() / record_cnt)*100);
-    printf("LFU %.1f\n", (lfu_cache.getHit() / record_cnt)*100);
-    printf("TWO %.1f\n", (twoQ_cache.getHit() / record_cnt)*100);
+    printf("%.1f\n", (fifo_cache.getHit() / record_cnt)*100);
+    printf("%.1f\n", (lfu_cache.getHit() / record_cnt)*100);
+    printf("%.1f\n", (lru_cache.getHit() / record_cnt)*100);
+    printf("%.1f\n", (twoQ_cache.getHit() / record_cnt)*100);
 
     return 0;
 }
