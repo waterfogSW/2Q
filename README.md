@@ -13,10 +13,13 @@ make
 - 4th argument (20) : The ratio of the size of a1 cash to the total cache size.
 
 ## Experiment
-10000부터 cache size를 줄여가며 진행
 
 ![img1](./output1.png)
 ![img2](./output2.png)
+
+- TWO_Q 10 : a1 cache ratio - 10%
+- TWO_Q 30 : a1 cache ratio - 30%
+- TWO_Q 50 : a1 cache ratio - 50%
 
 ## LRU
 LRU는 Least Recently Used의 약자로 페이지 폴트가 발생하게 되면 가장 오래전에 접근했던 페이지를 퇴출시켜 공간을 확보합니다.
