@@ -15,6 +15,9 @@ make
 ## Experiment
 10000부터 cache size를 줄여가며 진행
 
+![img1](./output1.png)
+![img2](./output2.png)
+
 ## LRU
 LRU는 Least Recently Used의 약자로 페이지 폴트가 발생하게 되면 가장 오래전에 접근했던 페이지를 퇴출시켜 공간을 확보합니다.
 
