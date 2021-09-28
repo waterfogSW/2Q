@@ -13,6 +13,7 @@ make
 - 4th argument (20) : The ratio of the size of a1 cash to the total cache size.
 
 ## Experiment
+with twitter trace workload
 
 ![img1](./output1.png)
 ![img2](./output2.png)
